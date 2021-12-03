@@ -45,5 +45,14 @@ router.get("api/workouts", (req, res) => {
     });
 });
 
+router.get("/api/workouts/range", (req, res) => {
+    db.Workout.find({})
+    .then((data) => {
+        res.json(data);
+    })
+    .catch((err) => {
+        res.json(err);
+    });
+});
 
 module.exports = router;
