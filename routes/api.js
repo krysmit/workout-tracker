@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const db = require("../models");
 
-router.post("/api/workouts", ({ body }, res) => {
+router.post("/workouts", ({ body }, res) => {
     db.Workout.create(body)
     .then((data) => {
         res.json(data);
@@ -11,7 +11,7 @@ router.post("/api/workouts", ({ body }, res) => {
     });
 });
 
-router.put("/api/workouts/:id", (req,res) => {
+router.put("/workouts/:id", (req,res) => {
     db.Workout.findOneAndUpdate(
         {_id: req.params.id},
         {
@@ -28,7 +28,7 @@ router.put("/api/workouts/:id", (req,res) => {
     });
 });
 
-router.get("api/workouts", (req, res) => {
+router.get("/workouts", (req, res) => {
     db.Workout.find({})
     .then((data) => {
         data.forEach((workout) => {
@@ -45,7 +45,7 @@ router.get("api/workouts", (req, res) => {
     });
 });
 
-router.get("/api/workouts/range", (req, res) => {
+router.get("/workouts/range", (req, res) => {
     db.Workout.find({})
     .then((data) => {
         res.json(data);
